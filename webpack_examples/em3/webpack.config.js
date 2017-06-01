@@ -4,9 +4,6 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
-
-var HelloPlugin = require('./selfplugins/HelloPlugin.js');
-
 module.exports = {
     entry: './src/index.js',
     output: {
@@ -38,9 +35,6 @@ module.exports = {
         // js 代码丑化
         new UglifyJSPlugin({
             beautify: false,
-        }),
-
-        new HelloPlugin({options: true})
-
+        })
     ]
 }
