@@ -1,42 +1,49 @@
 const webpack = require("webpack");
 const path = require('path');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const DashboardPlugin = require('webpack-dashboard/plugin');
 
 module.exports = {
     entry: './src/index.js',
     output: {
         filename: '[name].[hash].js',
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, 'dist'),
+        libraryTarget: "umd"    //  定义导出库的类型
     },
     module: {
         rules: [{
             test: /\.css$/,
-           // use: [ 'style-loader', 'css-loader' ]
-            use: ExtractTextPlugin.extract({
-                use: 'css-loader'
-            }),
+            use: [ 'style-loader', 'css-loader' ],
+            // use: ExtractTextPlugin.extract({
+            //     use: 'css-loader'
+            // }),
             include: [
               path.resolve(__dirname, "src")
             ],
-            exclude: [
+            exclude: [      // 尽量避免
               path.resolve(__dirname, "src/demo")
             ]
         }]
     },
     resolve: {
+
+        // 定义用于查找模块的目录
         modules: [
             "node_modules",
-            path.resolve(__dirname, "app")
-        ],
+            path.resolve(__dirname, "src")    
+        ],          
 
+        // 使用的扩展名
         extensions: [".js", ".json", ".jsx", ".css"],
 
+        //  使用别名
         alias: {
-            "module": path.resolve(__dirname, "app/third/module.js")
+            "$": "JQuery"  
         }
     },
+
     devServer: {
         contentBase: path.join(__dirname, "dist"),
         compress: true,
@@ -44,13 +51,18 @@ module.exports = {
         inline:true
     },
 
+    // 启用观察
     watch: true,
+
     watchOptions: {
       aggregateTimeout: 300, // 延时300毫秒再编译
       poll: 1000 // 每1秒进行一次轮询
     },
 
     plugins: [
+
+        new DashboardPlugin(),
+
         // 生成html且引入bundle
         new HtmlWebpackPlugin({
             filename: './index.html'

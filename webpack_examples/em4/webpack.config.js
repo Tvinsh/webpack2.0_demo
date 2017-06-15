@@ -1,10 +1,12 @@
 const webpack = require("webpack");
 const path = require('path');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
+// 引入自定义的plugin
+const HelloWebpackPlugin = require('./selfplugins/hello-webpack-plugin.js');
 
-var HelloWebpackPlugin = require('./selfplugins/hello-webpack-plugin.js');
+const DashboardPlugin = require('webpack-dashboard/plugin');
 
 module.exports = {
     entry: './src/index.js',
@@ -28,6 +30,9 @@ module.exports = {
         inline:true
     },
     plugins: [
+
+        new DashboardPlugin(),
+        
         // 生成html且引入bundle
         new HtmlWebpackPlugin({
             filename: './index.html'

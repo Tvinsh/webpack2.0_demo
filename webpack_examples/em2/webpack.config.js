@@ -4,6 +4,8 @@
 const webpack = require("webpack");
 const path = require('path');
 
+const DashboardPlugin = require('webpack-dashboard/plugin');
+
 module.exports = {
     entry: {
         main: './src/index.js',
@@ -14,6 +16,9 @@ module.exports = {
         path: path.resolve(__dirname, 'dist')
     },
     plugins: [
+
+        new DashboardPlugin(),
+        
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
             minChunks: function (module) {
@@ -22,9 +27,9 @@ module.exports = {
             }
         }),
         // 加了这个之后，每次编译时不会再重新生成vender的hash
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'manifest' 
-        }),
+        // new webpack.optimize.CommonsChunkPlugin({
+        //     name: 'manifest' 
+        // }),
 
     ]
 }

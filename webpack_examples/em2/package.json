@@ -4,13 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "webpack-dashboard -c green  webpack"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "jQuery": "^1.7.4",
-    "webpack": "^2.5.1"
+    "webpack": "^2.5.1",
+    "webpack-dashboard": "^0.4.0"
   },
   "dependencies": {
     "moment": "^2.18.1"

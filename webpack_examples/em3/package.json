@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "webpack-dashboard -c green  webpack"
   },
   "author": "",
   "license": "ISC",
@@ -16,6 +16,7 @@
     "style-loader": "^0.17.0",
     "uglifyjs-webpack-plugin": "^0.4.3",
     "webpack": "^2.5.1",
+    "webpack-dashboard": "^0.4.0",
     "webpack-dev-server": "^2.4.5"
   },
   "dependencies": {
