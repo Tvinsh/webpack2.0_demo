@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "webpack-dashboard -c green  webpack"
+    "dev": "webpack-dashboard -c green  webpack",
+    "server": "webpack-dashboard -c green webpack-dev-server --hot --line"
   },
   "author": "",
   "license": "ISC",

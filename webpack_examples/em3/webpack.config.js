@@ -1,3 +1,6 @@
+
+// 拆分css
+
 const webpack = require("webpack");
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -10,19 +13,19 @@ module.exports = {
     output: {
         filename: '[name].[hash].js',
         path: path.resolve(__dirname, 'dist'),
-        libraryTarget: "umd"    //  定义导出库的类型
+        libraryTarget: "umd"    //  定义导出库的类型  项目代码一般不用写
     },
     module: {
         rules: [{
             test: /\.css$/,
-            use: [ 'style-loader', 'css-loader' ],
-            // use: ExtractTextPlugin.extract({
-            //     use: 'css-loader'
-            // }),
+            //use: [ 'style-loader', 'css-loader' ],
+            use: ExtractTextPlugin.extract({
+                use: 'css-loader'
+            }),
             include: [
               path.resolve(__dirname, "src")
             ],
-            exclude: [      // 尽量避免
+            exclude: [      
               path.resolve(__dirname, "src/demo")
             ]
         }]

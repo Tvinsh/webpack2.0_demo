@@ -1,3 +1,5 @@
-import { A } from './component/index.js';
-let a = new A();
-a.render();
+import { cube } from './component/index.js';
+
+let a = cube(2);
+
+document.body.innerHTML = a;

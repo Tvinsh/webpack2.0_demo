@@ -1,9 +1,8 @@
-//import './index.css'
+import './index.css'
 const content = document.getElementById('content')
 content.innerHTML='it works';
 
-// Notice!!!
-// Following is required to make reloading happen
+// 实现热替换，需要在入口文件加上这句话
 if (module.hot) {
   module.hot.accept();
 }

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "webpack-dashboard -c green  webpack"
+    "dev": "webpack-dashboard -c green  webpack"
   },
   "author": "",
   "license": "ISC",

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "webpack-dashboard -c green node server.js"
+    "dev": "webpack-dashboard -c green node server.js"
   },
   "author": "",
   "license": "ISC",
@@ -23,6 +23,8 @@
     "webpack-hot-middleware": "^2.18.0"
   },
   "dependencies": {
-    "moment": "^2.18.1"
+    "css-loader": "^0.28.4",
+    "moment": "^2.18.1",
+    "style-loader": "^0.17.0"
   }
 }

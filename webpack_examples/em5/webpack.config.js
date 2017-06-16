@@ -4,6 +4,8 @@
 const webpack = require("webpack");
 const path = require('path'); 
 
+const DashboardPlugin = require('webpack-dashboard/plugin');
+
 module.exports = {
     entry: {
         main: './main.js'
@@ -21,5 +23,12 @@ module.exports = {
                 presets: [["es2015", { "modules": false}]]
             }
         }]
-    }
+    },
+    plugins: [
+        new DashboardPlugin(),
+        
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'manifest' 
+        }),
+    ]
 }

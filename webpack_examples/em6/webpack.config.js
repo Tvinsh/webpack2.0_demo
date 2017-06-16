@@ -14,10 +14,14 @@ module.exports = {
     publicPath: '/assets/',
     filename: 'bundle.js'
   },
+  module: {
+      rules: [{
+          test: /\.css$/,
+          use: [ 'style-loader', 'css-loader' ]
+      }]
+  },
   plugins: [
-    // Webpack 1.0
-    //new webpack.optimize.OccurenceOrderPlugin(),
-    // Webpack 2.0 fixed this mispelling
+
     // new webpack.optimize.OccurrenceOrderPlugin(),
 
     new DashboardPlugin(),
@@ -28,5 +32,3 @@ module.exports = {
 
 
 }
-
-//compiler.apply(new DashboardPlugin());
